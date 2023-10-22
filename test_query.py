@@ -1,9 +1,8 @@
 import psycopg2
 
-# Define the connection parameters
-
-
-
+"""
+Module to test database query
+"""
 
 
 try:

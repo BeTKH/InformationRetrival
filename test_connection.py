@@ -1,6 +1,10 @@
 # app.py
 import psycopg2
 
+"""
+Module to test database connection
+"""
+
 # Database connection parameters
 db_params = {
     "dbname": "loan_status",
