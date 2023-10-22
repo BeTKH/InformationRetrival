@@ -9,7 +9,7 @@ import psycopg2
 try:
     
     # Establish a connection to the PostgreSQL database ( installed locally)
-    conn = psycopg2.connect(
+    connection = psycopg2.connect(
     dbname="loan_status",
     user="postgres",
     password="1433",
@@ -17,7 +17,7 @@ try:
     port="5432")
    
     # Create a cursor object to interact with the database
-    cursor = conn.cursor()
+    cursor = connection.cursor()
 
     # Define your SQL query: loan_data_woc is a table under loan_status databse 
     query = "SELECT Loan_ID, Gender, Property_Area \
@@ -28,13 +28,16 @@ try:
     cursor.execute(query)
 
     # Fetch the results
-    results = cursor.fetchall()
+    records = cursor.fetchall()
 
-    # Do something with the results (e.g., print them)
+    
 
+    #print header of the table 
     print('\nLoan_ID, Gender, Property_Area \n')
-    for row in results:
-        print(row)
+
+    #print results iteratively
+    for record in records:
+        print(record)
 
 except psycopg2.Error as e:
     print("Error connecting to the database:", e)
@@ -43,5 +46,5 @@ finally:
     # Close the cursor and connection
     if cursor:
         cursor.close()
-    if conn:
-        conn.close()
+    if connection:
+        connection.close()
