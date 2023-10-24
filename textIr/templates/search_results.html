@@ -1,0 +1,7 @@
+<!-- templates/search_results.html -->
+<h1>Search Results for "{{ query }}"</h1>
+<ul>
+  {% for result in results %}
+  <li>{{ result.title }} - Relevance Score: {{ result.relevance_score }}</li>
+  {% endfor %}
+</ul>
