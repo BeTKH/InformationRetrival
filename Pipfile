@@ -6,6 +6,11 @@ name = "pypi"
 [packages]
 django = "*"
 pylint-django = "*"
+jupyter = "*"
+notebook = "*"
+nltk = "*"
+pandas = "*"
+matplotlib = "*"
 
 [dev-packages]
 
