@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'searchFunc.apps.SearchfuncConfig'
+    'searchFunc.apps.SearchfuncConfig',
+    'tdm.apps.TdmConfig'
 ]
 
 MIDDLEWARE = [
