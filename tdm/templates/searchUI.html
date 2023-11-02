@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Search Interface</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .search-form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      .search-form input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .search-form button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #4caf50;
+        color: white;
+        border: 1px solid #4caf50;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+      }
+
+      .result-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .result-list li {
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+    <h2>InformationRetrival</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+      <h3>Search Documents</h3>
+      <div class="search-form">
+        <input type="text" id="searchInput" placeholder="text query here..." />
+        <button onclick="searchDocuments()">Search</button>
+      </div>
+      <ul class="result-list" id="searchResults">
+        <!-- Search results will be displayed here -->
+      </ul>
+    </div>
+
+    <!-- 
+    <div class="footer">
+      &copy; 2023 | Course: CSCI 765 Databases | Project name: InformationRetrival
+    </div> -->
+  </body>
+</html>
