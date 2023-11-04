@@ -30,7 +30,6 @@ path ('nameOfApp/', include('path To the App url'))
 urlpatterns = [
 
     path('', views.getQueryText, name="getQueryText__"),
-    path('', views.acceptUserQuery, name="acceptquery"),
     path('admin/', admin.site.urls),
     path('searchFunc/', include('searchFunc.urls')),
     path('tdm/', include('tdm.urls')),
