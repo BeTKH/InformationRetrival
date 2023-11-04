@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Search Interface</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .formContainer {
+        display: flex;
+        margin-top: 100px;
+      }
+
+      .formContainer input[type="text"] {
+        flex: 2;
+        width: 450px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .formContainer button {
+        width: 120px;
+        padding: 10px;
+        font-size: 16px;
+        background: #4caf50;
+        color: gery;
+        border: 1px solid #4caf50;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Information Retrieval</h1>
+      <h3 style="text-align: center">project gutenberg files</h3>
+
+      <div class="formContainer">
+        <form
+          class="input-form"
+          action="{% url 'getQueryText__' %}"
+          method="POST"
+        >
+          {% csrf_token %}
+          <input
+            class="inputfiled"
+            type="text"
+            id="searchInput"
+            name="userRequest"
+            placeholder="query documents ..."
+            style="border-radius: 4px"
+          />
+
+          <button class="btn-submit" type="submit">Search</button>
+        </form>
+      </div>
+      <ul class="result-list">
+        <!-- Display search results here -->
+      </ul>
+    </div>
+
+    <!-- <div class="footer">
+    &copy; 2023 | Course: CSCI 765 Databases | Project name: Information Retrieval
+  </div> -->
+  </body>
+</html>

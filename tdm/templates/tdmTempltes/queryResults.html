@@ -1,0 +1,28 @@
+{% extends "base_bootstrap.html" %} {% block content %}
+
+<h1>Query Results</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>docID</th>
+      <th>file name</th>
+      <th>Overview</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for doc in documents_ %}
+
+    <tr>
+      <td>
+        <a href="/tdm/{{doc.pk}}">{{doc.pk}}</a>
+      </td>
+      <td>{{doc.title}}</td>
+      <td>{{doc.overview}}</td>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

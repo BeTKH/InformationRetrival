@@ -1,0 +1,14 @@
+{% extends "base_bootstrap.html" %} {% block content %}
+
+<dl>
+  <dt>DocumentID</dt>
+  <td>{{docDetails_.pk}}</td>
+
+  <dt>File name</dt>
+  <dd>{{docDetails_.title}}</dd>
+
+  <dt>Content</dt>
+  <td>{{docDetails_.content}}</td>
+</dl>
+
+{% endblock %}
