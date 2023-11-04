@@ -13,7 +13,7 @@ customize the admin UI for Documents
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'title', 'content', 'date_created')
+    list_display = ('id', 'author', 'title')
 
 
 # Register your models here to access them via  the Admin UI
