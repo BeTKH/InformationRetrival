@@ -11,6 +11,8 @@ notebook = "*"
 nltk = "*"
 pandas = "*"
 matplotlib = "*"
+psycopg2 = "*"
+
 
 [dev-packages]
 
