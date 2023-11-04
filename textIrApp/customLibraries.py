@@ -4,10 +4,74 @@ import collections
 import numpy as np
 
 
-# nltk tools
-stopwords_en = nltk.corpus.stopwords.words("english")
 ps = nltk.stem.PorterStemmer()
 
+
+"""
+-----------------------------------------------------------------------------------------
+DATA LOADING Function(s):
+
+    load_allfiles()
+    
+
+
+
+DATA CLEANING FUNCTIONS: 
+
+
+    - cleanQuery() "cleans up" query texts using: 
+
+        casefoldQuery()           
+        normalizeQuery()            
+        filterStopWordsQuery()      
+        stemQuery()                  
+        stemQuery()
+
+    - clean_Entirefiles() "cleans up" entire files (corpus) using:
+
+        casefold_allfiles()
+        normalize_allfiles()
+        remove_stopwords_allfiles()
+        stem_allfiles()
+
+        
+
+
+
+Term Document Matrx building: 
+
+    summarize_Entirefiles()
+    create_term_document_matrix()
+
+
+QUERY PROCESSING:  
+
+    query_documents()
+
+-----------------------------------------------------------------------------------------
+"""
+
+
+"""
+-----------------------------------------------------------------------------------------
+DATA LOADING 
+-----------------------------------------------------------------------------------------
+"""
+
+
+def load_allfiles():
+
+    # load all files from gutenberg corpus
+    file_names = nltk.corpus.gutenberg.fileids()
+
+    return [nltk.corpus.gutenberg.words(file) for file in file_names]
+
+
+"""
+-----------------------------------------------------------------------------------------
+CLEAN UP QUERY TEXT  
+-----------------------------------------------------------------------------------------
+"""
 # case folding
 
 
@@ -35,30 +99,44 @@ def stemQuery(file):
     return [ps.stem(token) for token in file]
 
 
-# remove special characters
-characters_to_remove = "[\[\]\(\){},.!\?;:\-_'\"]"
-
-
 def cleanQuery(query):
+
     query = casefoldQuery(query)
+
+    # remove special characters
+    characters_to_remove = "[\[\]\(\){},.!\?;:\-_'\"]"
     query = normalizeQuery(query, characters_to_remove)
+
+    # nltk tools
+    stopwords_en = nltk.corpus.stopwords.words("english")
     query = filterStopWordsQuery(query, stopwords_en)
+
     query = [ps.stem(word) for word in query]
     return query
 
 
+"""
+-----------------------------------------------------------------------------------------
+CLEAN UP ALL FILES ( entire corpus)
+-----------------------------------------------------------------------------------------
+"""
 # casefold all files
+
+
 def casefold_allfiles(corpus):
     return [casefoldQuery(file) for file in corpus]
 
-# clean all files
 
-
+# clean special characters
 def normalize_allfiles(files):
+
+    # remove special characters
+    characters_to_remove = "[\[\]\(\){},.!\?;:\-_'\"]"
     return [normalizeQuery(file, characters_to_remove) for file in files]
 
 
 def remove_stopwords_allfiles(corpus):
+    stopwords_en = nltk.corpus.stopwords.words("english")
     return [filterStopWordsQuery(file, stopwords_en) for file in corpus]
 
 # stems all words in a file
@@ -70,19 +148,21 @@ def stem_allfiles(corpus):
 
 def clean_Entirefiles(corpus):
 
-    # casefold  chars
     corpus = casefold_allfiles(corpus)
-
-    # clean special chars
     corpus = normalize_allfiles(corpus)
-
-    # remove stop words
     corpus = remove_stopwords_allfiles(corpus)
-
-    # stemming
     cleanCorpus = stem_allfiles(corpus)
 
     return cleanCorpus
+
+
+"""
+-----------------------------------------------------------------------------------------
+
+BUILD TERM-DOCUMENT-MATRIX
+   
+-----------------------------------------------------------------------------------------
+"""
 
 
 # Run corpus summary on each document
@@ -96,14 +176,6 @@ def summarize_Entirefiles(corpus):
     for c in counters:
         counter_tmp += c
     return (counter_tmp, counters)
-
-
-# load all files from gutenberg corpus
-file_names = nltk.corpus.gutenberg.fileids()
-
-
-def load_allfiles():
-    return [nltk.corpus.gutenberg.words(file) for file in file_names]
 
 
 def create_term_document_matrix(corpus):
@@ -126,7 +198,58 @@ def create_term_document_matrix(corpus):
     return (tdm, list(counter_corpus.keys()))
 
 
-# perform query
+"""
+-----------------------------------------------------------------------------------------
+
+QUERY EXCUTION
+
+query_documents()
+
+    retruns documents' relevance score array sth like 
+
+    result = array([8.670e+02, 3.000e+00, 2.000e+00, 2.979e+03, 3.000e+00, 0.000e+00,
+       0.000e+00, 0.000e+00, 3.000e+00, 6.000e+00, 2.000e+00, 1.000e+00,
+       8.000e+00, 6.000e+00, 3.890e+02, 3.000e+00, 1.000e+00, 0.000e+00])
+    
+-----------------------------------------------------------------------------------------
+"""
+
+
 def query_documents(tdm, terms, query):
     idxs = [terms.index(word) for word in query if word in terms]
-    return tdm[idxs].sum(axis=0)
+    documentScore = tdm[idxs].sum(axis=0)
+    return documentScore
+
+
+"""
+-----------------------------------------------------------------------------------------
+PRESENT DATA by order of relevance  
+-----------------------------------------------------------------------------------------
+"""
+# map files names with relevance score in a dict
+
+
+def orderByRelevance(docScore):
+
+    file_names = [title.split('.')[0]
+                  for title in nltk.corpus.gutenberg.fileids()]
+
+    # normalize scores
+    docScore = (docScore / np.sum(docScore)) * 100
+
+    # round it
+    docScore = np.round(docScore, 1)
+
+    # map score with file names
+    file_score_map = {file_names[i]: docScore[i]
+                      for i in range(len(file_names))}
+
+    # Filter values greater than 0
+    file_score_filtered = {key: value for key,
+                           value in file_score_map.items() if value > 0}
+
+    # Sort in descending order
+    file_score_sorted = sorted(
+        file_score_filtered.items(), key=lambda x: x[1], reverse=True)
+
+    return file_score_sorted
