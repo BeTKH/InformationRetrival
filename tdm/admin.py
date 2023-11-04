@@ -13,7 +13,7 @@ customize the admin UI for TDM models
 
 # admin for the documents model in the tdm
 class DocmentsAdmin(admin.ModelAdmin):
-    list_display = ('docID', 'title', 'content')
+    list_display = ('docID', 'title', 'overview')
 
 
 class tdmAdmin(admin.ModelAdmin):
