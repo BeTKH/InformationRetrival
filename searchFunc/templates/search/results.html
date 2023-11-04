@@ -13,15 +13,15 @@
     </tr>
   </thead>
   <tbody>
-    {% for document in Documents %}
+    {% for doc in docResults_ %}
 
     <tr>
       <td>
-        <a href="/searchFunc/{{document.pk}}">{{document.pk}}</a>
+        <a href="/searchFunc/{{doc.pk}}">{{doc.pk}}</a>
       </td>
-      <td>{{document.title}}</td>
-      <td>{{document.author}}</td>
-      <td>{{document.content}}</td>
+      <td>{{doc.title}}</td>
+      <td>{{doc.author}}</td>
+      <td>{{doc.content}}</td>
 
       <!-- <td>{{document.date_created}}</td> -->
     </tr>
