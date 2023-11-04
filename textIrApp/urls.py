@@ -18,8 +18,21 @@ Including another URLconf ( !!!used this option!!!)
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views
+
+"""
+map urls to the app components 
+
+path ('nameOfApp/', include('path To the App url'))
+
+"""
 
 urlpatterns = [
+
+    path('', views.getQueryText, name="getQueryText__"),
+    path('', views.acceptUserQuery, name="acceptquery"),
     path('admin/', admin.site.urls),
-    path('searchFunc/', include('searchFunc.urls'))
+    path('searchFunc/', include('searchFunc.urls')),
+    path('tdm/', include('tdm.urls')),
+
 ]
