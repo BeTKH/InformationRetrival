@@ -1,3 +1,4 @@
+{% extends "base_bootstrap.html" %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,13 +13,34 @@
         background-color: #f4f4f4;
       }
 
-      .container {
-        max-width: 600px;
+      .navbar{
+        height: 50px;
+        width: 800px;
+        margin: 0 auto;
+        background-color: #f4f4f4;
+      }
+
+     
+      .search-container {
+        max-width: 800px;
+        max-height: 150px;
         margin: 0 auto;
         background-color: #fff;
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 10px 10px 0px 0px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .result-container {
+
+        max-width: 800px;
+        max-height:fit-content;
+       
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 0 0px 10px 10px;
+
       }
 
       h1 {
@@ -28,7 +50,7 @@
 
       .formContainer {
         display: flex;
-        margin-top: 100px;
+        margin-top: 10px;
       }
 
       .formContainer input[type="text"] {
@@ -51,11 +73,59 @@
         cursor: pointer;
         transition: all 0.3s ease;
       }
+
+
+
+      /* stayle for the search result*/
+      .docID-column {
+         width: 45px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .file-link {
+        text-decoration: none;
+        color: #0000ff;
+      }
+
+      .overview-column {
+        width: 60%; /* Adjust the width as needed */
+        max-width: 150px; /* Set a max-width if necessary */
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      
+
+
     </style>
   </head>
 
+ 
+
   <body>
-    <div class="container">
+
+    
+
+    <nav class="navbar">
+      <span class="navbar-brand mb-0 h1"></span>
+    </nav>
+
+
+    <div class="search-container">
       <h1>Information Retrieval</h1>
       <h3 style="text-align: center">project gutenberg files</h3>
 
@@ -78,13 +148,63 @@
           <button class="btn-submit" type="submit">Search</button>
         </form>
       </div>
-      <ul class="result-list">
-        <!-- Display search results here -->
-      </ul>
     </div>
 
-    <!-- <div class="footer">
-    &copy; 2023 | Course: CSCI 765 Databases | Project name: Information Retrieval
-  </div> -->
+
+     <!-- 
+
+
+      SEARCH RESULT 
+    
+       -->
+
+    <div class="result-container">
+
+      <h3>search results</h3>
+
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Relevance (%)</th>
+            <th>File name</th>
+            <th>Document Overview</th>
+            <th>docID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 
+              fileNames_scores_ returned by views.py from texIrApp
+              something like  ('bible-kjv', 99.4)
+
+              hence: 
+              fileName_ = 'bible-kjv'
+              score_    = 99.4
+          
+          -->
+          {% for fileName_, score_ in fileNames_scores_ %}
+          <tr>
+            <td class="fileScore-column">{{ score_ }}</td>
+            <td class="fileName-column">{{ fileName_ }}</td>
+
+            {% for doc in dbDocumentFilelds_ %} {% if doc.title == fileName_ %}
+
+            <td class="overview-column">{{ doc.overview }}</td>
+            <td class="docID-column">
+              <a href="/tdm/{{doc.pk}}" class="file-link">{{ doc.pk }}</a>
+            </td>
+            {% endif %} {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+    </div>
+
+    <nav class="navbar">
+      <span class="navbar-brand mb-0 h1"></span>
+    </nav>
   </body>
 </html>
+{% endblock %}

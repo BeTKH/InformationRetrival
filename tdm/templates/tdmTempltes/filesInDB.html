@@ -1,0 +1,54 @@
+{% extends "base_bootstrap.html" %} {% block content %}
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    max-width: 800px;
+    max-height: fit-content;
+
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+</style>
+
+<body>
+  <h4>List of Files in the DB</h4>
+
+  <div class="container">
+    <nav class="navbar">
+      <span class="navbar-brand mb-0 h1"></span>
+    </nav>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>docID</th>
+          <th>file name</th>
+          <th>Overview</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for doc in documents_ %}
+
+        <tr>
+          <td>
+            <a href="{{doc.pk}}">{{doc.pk}}</a>
+          </td>
+          <td>{{doc.title}}</td>
+          <td>{{doc.overview}}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+{% endblock %}

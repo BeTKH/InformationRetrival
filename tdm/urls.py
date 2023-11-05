@@ -11,5 +11,5 @@ appName = 'tdm'
 
 urlpatterns = [
     path('', views.queryResults, name='queryResult'),
-    path('<int:pkkk>', views.getDocumentDetails, name='documentDetails'),
+    path('<int:pkkk>', views.getDocumentDetails_tdm, name='documentDetails_'),
 ]

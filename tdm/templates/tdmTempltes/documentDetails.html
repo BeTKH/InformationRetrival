@@ -1,14 +1,38 @@
 {% extends "base_bootstrap.html" %} {% block content %}
 
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    max-width: 800px;
+    max-height: fit-content;
+
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+</style>
+
 <dl>
-  <dt>DocumentID</dt>
-  <td>{{docDetails_.pk}}</td>
 
-  <dt>File name</dt>
-  <dd>{{docDetails_.title}}</dd>
+  <div class="container">
+  <dt>DocumentID:   <td>{{docDetails_tdm_.pk}}</td></dt>
+  
+  <br>
 
-  <dt>Content</dt>
-  <td>{{docDetails_.content}}</td>
+  <dt>File name: <td>{{docDetails_tdm_.title}}</td></dt>
+  <br>
+
+  <h3>Content</h3>
+  <br>
+  <td>{{docDetails_tdm_.content}}</td>
 </dl>
+</div>
 
 {% endblock %}
