@@ -22,6 +22,7 @@ def getQueryText(requestIndex):
         print(queryText_clean)
 
         # execute the query
+
         documentScoreArray = query_documents(tdm, allTerms, queryText_clean)
 
         fileNames_score = orderByRelevance(documentScoreArray)

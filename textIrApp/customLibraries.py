@@ -48,6 +48,11 @@ QUERY PROCESSING:
 
     query_documents()
 
+
+
+Query Optimization:
+
+
 -----------------------------------------------------------------------------------------
 """
 
@@ -253,3 +258,27 @@ def orderByRelevance(docScore):
         file_score_filtered.items(), key=lambda x: x[1], reverse=True)
 
     return file_score_sorted
+
+
+"""
+-----------------------------------------------------------------------------------------
+QUERY OPTIMIZATION 
+
+logScale_tf()
+scale_tfidf
+
+-----------------------------------------------------------------------------------------
+"""
+
+
+def logScale_tf(tdm):
+    return np.log1p(tdm)
+
+
+def scale_tfidf(tdm_):
+    tdm_ = logScale_tf(tdm_)
+    tmp = tdm_ != 0
+    num_documents = tdm_.shape[1]
+
+    idf = np.log(num_documents/tdm_.sum(axis=1))
+    return (tdm_.T * idf).T
