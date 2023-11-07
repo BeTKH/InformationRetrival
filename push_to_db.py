@@ -1,31 +1,37 @@
 import nltk
-import os
-import django
-from django.utils import timezone
-from tdm.pushFunctions import overviewList, contentsList
-from tdm.models import Documents
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "textIrApp.settings")
-django.setup()
+import psycopg2
+from push_getContents import getDocTitles, getOverviews, getContents
 
 
-# get document titles
-documentTitles = [title.split('.')[0]
-                  for title in nltk.corpus.gutenberg.fileids()]
+# setup db connection
+conn = psycopg2.connect(
+    dbname="ir_test",
+    user="kobro",
+    password="1433",
+    host="localhost",
+    port="5432"
+)
 
-# get a list of document overviews
-documentOverviews = overviewList(fileDirectory="gutenberg")
+# get file names
+fileNameList = nltk.corpus.gutenberg.fileids()
+fileDir_ = 'gutenberg'
 
-# get contents of a document
-documetContents = contentsList(fileDirectory_="gutenberg")
+titles = getDocTitles()
+overviews = getOverviews(fileNameList, fileDir_)
+contents = getContents(fileNameList, fileDir_)
 
-# Iterate through the lists and create instances of the Documents model
-for i in range(len(documentTitles)):
-    document = Documents(
-        title=documentTitles[i],
-        overview=documentOverviews[i],
-        content=documetContents[i],
-        date_created=timezone.now()
-    )
-    document.save()
+# Create a cursor object using the connection
+cur = conn.cursor()
 
-print("Data pushed to the database successfully.")
+# SQL statement for data insertion into table 'tdm_documents '
+sql = "INSERT INTO tdm_documents  (title, overview, content) VALUES (%s, %s, %s)"
+
+# Execute the SQL statement for each tuple in the list
+for title, overview, content in zip(titles, overviews, contents):
+    data = (title, overview, content)
+    cur.execute(sql, data)
+
+    # Commit the transaction and close the cursor and connection
+conn.commit()
+cur.close()
+conn.close()
