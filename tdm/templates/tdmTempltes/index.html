@@ -13,14 +13,13 @@
         background-color: #f4f4f4;
       }
 
-      .navbar{
+      .navbar {
         height: 50px;
         width: 800px;
         margin: 0 auto;
         background-color: #f4f4f4;
       }
 
-     
       .search-container {
         max-width: 800px;
         max-height: 150px;
@@ -32,15 +31,13 @@
       }
 
       .result-container {
-
         max-width: 800px;
-        max-height:fit-content;
-       
+        max-height: fit-content;
+
         margin: 0 auto;
         background-color: #fff;
         padding: 20px;
         border-radius: 0 0px 10px 10px;
-
       }
 
       h2 {
@@ -74,11 +71,9 @@
         transition: all 0.3s ease;
       }
 
-
-
       /* stayle for the search result*/
       .docID-column {
-         width: 45px;
+        width: 45px;
       }
 
       table {
@@ -86,7 +81,8 @@
         border-collapse: collapse;
       }
 
-      th,td {
+      th,
+      td {
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
@@ -107,27 +103,17 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-
-      
-
-
     </style>
   </head>
 
- 
-
   <body>
-
-    
-
     <nav class="navbar">
       <span class="navbar-brand mb-0 h1"></span>
     </nav>
 
-
     <div class="search-container">
-      <h2>Information Retrieval </h2>
-      <h4 style="text-align: center">CS765 project:  Retrive gutenberg files</h4>
+      <h2>Information Retrieval</h2>
+      <h4 style="text-align: center">CS765 project: retrive files</h4>
 
       <div class="formContainer">
         <form
@@ -150,8 +136,7 @@
       </div>
     </div>
 
-
-     <!-- 
+    <!-- 
 
 
       SEARCH RESULT 
@@ -159,13 +144,7 @@
        -->
 
     <div class="result-container">
-
-      
-
-
       <table class="table table-hover">
-       
-        
         <tbody>
           <!-- 
               fileNames_scores_ returned by views.py from texIrApp
@@ -192,8 +171,6 @@
           {% endfor %}
         </tbody>
       </table>
-
-
     </div>
 
     <nav class="navbar">
