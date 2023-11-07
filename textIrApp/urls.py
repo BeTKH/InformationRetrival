@@ -31,7 +31,5 @@ urlpatterns = [
 
     path('', views.getQueryText, name="getQueryText__"),
     path('admin/', admin.site.urls),
-    path('searchFunc/', include('searchFunc.urls')),
     path('tdm/', include('tdm.urls')),
-
 ]
