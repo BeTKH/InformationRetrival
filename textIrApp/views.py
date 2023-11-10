@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from tdm.models import Documents
+from tdm.models import Document
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 
-from .customLibraries import cleanQuery, query_documents, orderByRelevance
-from .createTDM import tdm, allTerms
+from .customLibraries import clean_Text, query_documents, orderByRelevance, renderPlot
+from .createTDM import tdm, allTerms, tdm_tf, tdm_tfidf
 
 
 @csrf_exempt
@@ -17,22 +17,26 @@ def getQueryText(requestIndex):
 
         queryText = str(requestDict["userRequest"])
 
-        queryText_clean = cleanQuery(queryText.split())
+        print(queryText)
 
-        print(queryText_clean)
+        # execute the query with tdm
+        # documentScoreArray = query_documents(tdm, allTerms, queryText)
 
-        # execute the query
+        # execute the query with tdm_tf
+        documentScoreArray = query_documents(tdm_tf, allTerms, queryText)
 
-        documentScoreArray = query_documents(tdm, allTerms, queryText_clean)
+        # execute the query with tdm_tfidf
+        # documentScoreArray = query_documents(tdm_tfidf, allTerms, queryText)
 
         fileNames_score = orderByRelevance(documentScoreArray)
 
         print(fileNames_score)
 
-        # get all document attributes from the database
-        dbDocumentFilelds = Documents.objects.all
+        # render plot and Get the image data as a byte string
+        # imgData = renderPlot(fileNames_score, 'blue')
 
-        # return queryText
+        # get all document attributes from the database
+        dbDocumentFilelds = Document.objects.all
 
         return render(requestIndex, 'tdmTempltes/index.html', {'fileNames_scores_': fileNames_score, 'dbDocumentFilelds_': dbDocumentFilelds})
         # return render(requestIndex, 'tdmTempltes/index.html')
@@ -45,5 +49,5 @@ def getDocumentDetails_ir(requestDetails, pkkk):
     # 'docID' is a primary key field in the Documents
     # docID=pkkk will assign the primary key to the pkkk argument
 
-    docDetails_ir = get_object_or_404(Documents, pk=pkkk)
+    docDetails_ir = get_object_or_404(Document, pk=pkkk)
     return render(requestDetails, 'tdmTempltes/documentDetails.html', {'docDetails_ir_': docDetails_ir})
