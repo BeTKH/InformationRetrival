@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Documents, TermDocumentMatrix
+from .models import Document
 
 """
 customize the admin UI for TDM models
@@ -16,10 +16,5 @@ class DocmentsAdmin(admin.ModelAdmin):
     list_display = ('docID', 'title', 'overview')
 
 
-class tdmAdmin(admin.ModelAdmin):
-    list_display = ('termID', 'docID', 'term', 'frequency')
-
-
 # register models to access via Admin UI
-admin.site.register(Documents, DocmentsAdmin)
-admin.site.register(TermDocumentMatrix, tdmAdmin)
+admin.site.register(Document, DocmentsAdmin)

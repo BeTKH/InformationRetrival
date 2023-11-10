@@ -48,18 +48,21 @@
       .formContainer {
         display: flex;
         margin-top: 10px;
+        margin: 0 auto;
       }
 
       .formContainer input[type="text"] {
-        flex: 2;
+        flex: 3;
         width: 635px;
         padding: 10px;
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px 0 0 4px;
+        margin: 0 auto;
       }
 
       .formContainer button {
+        flex: 1;
         width: 120px;
         padding: 10px;
         font-size: 16px;
@@ -69,6 +72,7 @@
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
+        margin: 0 auto;
       }
 
       /* stayle for the search result*/
@@ -155,7 +159,7 @@
               score_    = 99.4
           
           -->
-          {% for fileName_, score_ in fileNames_scores_ %}
+          {% for fileName_, score_ in fileNames_scores_.items %}
           <tr>
             <td class="fileScore-column">{{ score_ }}</td>
             <td class="fileName-column">{{ fileName_ }}</td>
