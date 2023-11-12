@@ -184,7 +184,7 @@ def create_term_document_matrix(all_files_):
     return (tdm, list(counter_corpus.keys()))
 
 
-# Run corpus summary on each document
+# count all unique tokens in all files
 def summarize_Files(files_):
     counters = [collections.Counter(file) for file in files_]
 
