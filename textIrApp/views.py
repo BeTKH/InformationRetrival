@@ -19,12 +19,11 @@ def getQueryText(requestIndex):
         print(queryText)
 
         # execute the query with tdm
-        # documentScoreArray = query_documents(tdm, allTerms, queryText)
-        # execute the query with tdm_tf
-        documentScoreArray = query_documents(tdm_tf, allTerms, queryText)
+        # documentScoreArray = query_documents(tdm, allTerms, queryText, idf_=False)
 
         # execute the query with tdm_tfidf
-        # documentScoreArray = query_documents(tdm_tfidf, allTerms, queryText)
+        documentScoreArray = query_documents(
+            tdm, allTerms, queryText, idf_=True)
 
         fileNames_score = orderByRelevance(documentScoreArray)
 
