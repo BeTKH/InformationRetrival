@@ -6,55 +6,21 @@ import numpy as np
 
 """
 -----------------------------------------------------------------------------------------
-DATA LOADING Function(s):
+FUNCTIONS USE
 
-    load_allfiles()
+DATA LOADING: 
+    - load_allfiles()
     
+DATA CLEANING: 
+    - clean_Text() "cleans up" query texts using: 
+    - clean_Files() "cleans up" entire files (corpus) using:
 
-
-
-DATA CLEANING FUNCTIONS: 
-
-
-    - cleanQuery() "cleans up" query texts using: 
-
-        casefoldQuery()           
-        normalizeQuery()            
-        filterStopWordsQuery()      
-        stemQuery()                  
-        stemQuery()
-
-    - clean_Entirefiles() "cleans up" entire files (corpus) using:
-
-        casefold_allfiles()
-        normalize_allfiles()
-        remove_stopwords_allfiles()
-        stem_allfiles()
-
-        
-
-Term Document Matrx building: 
-
-    summarize_Entirefiles()
-    create_term_document_matrix()
-
+TDM BUILDING:
+    - summarize_Entirefiles()
+    - create_term_document_matrix()
 
 QUERY PROCESSING:  
-
-    query_documents()
-
-
-
-Query Optimization:
-
-
------------------------------------------------------------------------------------------
-"""
-
-
-"""
------------------------------------------------------------------------------------------
-DATA LOADING 
+    - query_documents()
 -----------------------------------------------------------------------------------------
 """
 
