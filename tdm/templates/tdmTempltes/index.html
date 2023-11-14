@@ -119,6 +119,8 @@
       <h2>Information Retrieval</h2>
       <h4 style="text-align: center">CS765 project: retrive files</h4>
 
+      <!-- INPUT FROM -->
+
       <div class="formContainer">
         <form
           class="input-form"
@@ -140,25 +142,11 @@
       </div>
     </div>
 
-    <!-- 
-
-
-      SEARCH RESULT 
-    
-       -->
+    <!-- SEARCH RESULT -->
 
     <div class="result-container">
       <table class="table table-hover">
         <tbody>
-          <!-- 
-              fileNames_scores_ returned by views.py from texIrApp
-              something like  ('bible-kjv', 99.4)
-
-              hence: 
-              fileName_ = 'bible-kjv'
-              score_    = 99.4
-          
-          -->
           {% for fileName_, score_ in fileNames_scores_.items %}
           <tr>
             <td class="fileScore-column">{{ score_ }}</td>
