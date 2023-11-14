@@ -14,14 +14,12 @@ def getQueryText(requestIndex):
     if requestIndex.method == 'POST':
 
         requestDict = requestIndex.POST
-
         queryText = str(requestDict["userRequest"])
 
         print(queryText)
 
         # execute the query with tdm
         # documentScoreArray = query_documents(tdm, allTerms, queryText)
-
         # execute the query with tdm_tf
         documentScoreArray = query_documents(tdm_tf, allTerms, queryText)
 
@@ -34,11 +32,11 @@ def getQueryText(requestIndex):
 
         # render plot and Get the image data as a byte string
         # imgData = renderPlot(fileNames_score, 'blue')
-
         # get all document attributes from the database
         dbDocumentFilelds = Document.objects.all
 
-        return render(requestIndex, 'tdmTempltes/index.html', {'fileNames_scores_': fileNames_score, 'dbDocumentFilelds_': dbDocumentFilelds})
+        return render(requestIndex, 'tdmTempltes/index.html', {'fileNames_scores_': fileNames_score,
+                                                               'dbDocumentFilelds_': dbDocumentFilelds})
         # return render(requestIndex, 'tdmTempltes/index.html')
     else:
         return render(requestIndex, 'tdmTempltes/index.html')
