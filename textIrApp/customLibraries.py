@@ -181,7 +181,11 @@ QUERY processing
 """
 
 
-def query_documents(tdm, terms, queryText_):
+def query_documents(tdm, terms, queryText_, idf_):
+
+    #  if idf_ is True, apply idf scaling
+    if idf_:
+        tdm = scale_tfidf(tdm)
 
     # change query text into tokens
     queryText_ = queryText_.split()
@@ -301,7 +305,7 @@ scale_tfidf
 
 
 def logScale_tf(tdm):
-    return np.log1p(tdm)
+    return np.log1p(tdm+1)
 
 
 def scale_tfidf(tdm_):
