@@ -1,8 +1,12 @@
 ## Information Retrieval WebApp (Postgre SQL + Django)
 
-Retrieving documents based solely on query terms is slow and not scalable. Moreover, it is usually needed in information retrieval systems to arrange query results based on order of relevance.  
+### Problem: 
+- Retrieving documents by looking for query terms alone throughout documents is slow and not scalable. Moreover, it is usually needed in information retrieval systems to arrange query results based on the order of relevance to the query.
 
-This project aims to optimize the speed of document retrieval and ensure the display of retrieved documents in order of relevance. This will significantly impact the responsiveness requirement of end-user applications, particularly web apps, where presenting results within a 2-second timeframe is crucial.
-
-
-The current implementation approach is to use PostgreSQL with Django framework, Python text processing libraries for data cleaning, using term-frequency (tf-idf) or Postgre's ts-rank for document ranking. A dictionary data structure or hashing can be used to index query terms to documents for improved performance.
+### Accomplishments:
+- Implemented a responsive information retrieval WebApp (< 2 sec) using PostgreSQL + Django 
+- vectorial representation of files using a term-document-matrix (TDM) and query results 
+- Retrieval of those documents using a dictionary data structure and display of search result files in order of relevance. 
+- Created a database schema in PostgreSQL with Python's Django models. 
+- Database connection, configuration, and population with text files. 
+- Text pre-processing and cleaning using natural language processing toolkit ( NLTK)
