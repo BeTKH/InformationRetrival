@@ -12,7 +12,8 @@ nltk = "*"
 pandas = "*"
 matplotlib = "*"
 psycopg2 = "*"
-
+plotly = "*"
+kaleido = "*"
 
 [dev-packages]
 
