@@ -1,4 +1,4 @@
-## Improved Information Retrieval with Postgre SQL
+## Information Retrieval WebApp (Postgre SQL + Django)
 
 Retrieving documents based solely on query terms is slow and not scalable. Moreover, it is usually needed in information retrieval systems to arrange query results based on order of relevance.  
 
