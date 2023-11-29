@@ -14,9 +14,15 @@ matplotlib = "*"
 psycopg2 = "*"
 plotly = "*"
 kaleido = "*"
+pymongo = "*"
+djongo = "*"
+django-utils-six = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.10"
 python_full_version = "3.10.13"
+
+[pipenv]
+allow_prereleases = true
