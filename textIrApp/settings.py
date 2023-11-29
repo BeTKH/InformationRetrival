@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'textIrApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ir_test',
+        'NAME': 'irDB',
         'USER': 'kobro',
         'PASSWORD': 1433,
     }
