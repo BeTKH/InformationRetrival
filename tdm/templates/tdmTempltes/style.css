@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.navbar {
+  height: 50px;
+  width: 800px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+}
+
+.search-container {
+  max-width: 800px;
+  max-height: 150px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px 10px 0px 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-container {
+  max-width: 800px;
+  max-height: fit-content;
+
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 0 0px 10px 10px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.formContainer {
+  display: flex;
+  margin-top: 10px;
+  margin: 0 auto;
+}
+
+.formContainer input[type="text"] {
+  flex: 3;
+  width: 635px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  margin: 0 auto;
+}
+
+.formContainer button {
+  flex: 1;
+  width: 120px;
+  padding: 10px;
+  font-size: 16px;
+  background: #4caf50;
+  color: gery;
+  border: 1px solid #4caf50;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+/* stayle for the search result*/
+.docID-column {
+  width: 45px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.file-link {
+  text-decoration: none;
+  color: #0000ff;
+}
+
+.overview-column {
+  width: 60%; /* Adjust the width as needed */
+  max-width: 150px; /* Set a max-width if necessary */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
