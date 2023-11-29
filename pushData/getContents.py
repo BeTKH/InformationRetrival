@@ -17,7 +17,7 @@ def getOverviews(fileDirectory):
         if os.path.isfile(file_path):
             try:
                 with open(file_path, "r", encoding='latin-1') as file:
-                    content = file.read(200)
+                    content = file.read(100)
                     overviews.append(content)
             except Exception as e:
                 print(f"Error reading {file_name}: {e}")

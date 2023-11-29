@@ -4,7 +4,7 @@ from .getContents import getDocTitles, getOverviews, getContents
 
 # setup db connection
 conn = psycopg2.connect(
-    dbname="ir_test",
+    dbname="irDB",
     user="kobro",
     password="1433",
     host="localhost",
@@ -23,7 +23,7 @@ contents = getContents(fileDir_)
 cur = conn.cursor()
 
 # SQL statement for data insertion into table 'tdm_documents '
-sql = "INSERT INTO tdm_documents  (title, overview, content) VALUES (%s, %s, %s)"
+sql = "INSERT INTO tdm_document  (title, overview, content) VALUES (%s, %s, %s)"
 
 # Execute the SQL statement for each tuple in the list
 for title, overview, content in zip(titles, overviews, contents):
