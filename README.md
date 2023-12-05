@@ -10,3 +10,7 @@
 - Created a database schema in PostgreSQL with Python's Django models. 
 - Database connection, configuration, and population with text files. 
 - Text pre-processing and cleaning using natural language processing toolkit ( NLTK)
+
+
+
+View the Jupyter Notebook [here.](https://htmlpreview.github.io/?https://github.com/BeTKH/ir_notebook/blob/main/IR_final.html)
