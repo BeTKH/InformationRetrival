@@ -11,6 +11,11 @@
 - Database connection, configuration, and population with text files. 
 - Text pre-processing and cleaning using natural language processing toolkit ( NLTK)
 
-
-
 View the Jupyter Notebook [here.](https://htmlpreview.github.io/?https://github.com/BeTKH/ir_notebook/blob/main/IR_final.html)
+
+### Video 
+
+
+
+https://github.com/BeTKH/IR_postgres/assets/45674779/5944657a-e4e5-4f7d-9761-980ff171d0a4
+
