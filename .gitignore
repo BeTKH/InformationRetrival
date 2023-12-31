@@ -166,6 +166,8 @@ cython_debug/
 .ipynb
 .cscv
 
+**/.DS_Store
+
 /_archive
 /pushData/gutenberg/
 /gutenberg/
