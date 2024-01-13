@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
 
-def returnNER():
+def returnNER(requestNER):
 
-    pass
+    ner = "NER"
+
+    return ner
