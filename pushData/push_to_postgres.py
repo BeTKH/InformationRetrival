@@ -1,11 +1,11 @@
 import psycopg2
-from .getContents import getDocTitles, getOverviews, getContents
+from readContents import getDocTitles, getOverviews, getContents
 
 
 # setup db connection
 conn = psycopg2.connect(
     dbname="irDB",
-    user="kobro",
+    user="bekal",
     password="1433",
     host="localhost",
     port="5432"
@@ -22,7 +22,7 @@ contents = getContents(fileDir_)
 # Create a cursor object using the connection
 cur = conn.cursor()
 
-# SQL statement for data insertion into table 'tdm_documents '
+# SQL statement for data insertion into table 'tdm_document'
 sql = "INSERT INTO tdm_document  (title, overview, content) VALUES (%s, %s, %s)"
 
 # Execute the SQL statement for each tuple in the list

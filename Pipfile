@@ -11,12 +11,12 @@ notebook = "*"
 nltk = "*"
 pandas = "*"
 matplotlib = "*"
-psycopg2 = "*"
 plotly = "*"
 kaleido = "*"
 pymongo = "*"
 djongo = "*"
 django-utils-six = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

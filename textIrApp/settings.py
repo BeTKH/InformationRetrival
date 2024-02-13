@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'irDB',
-        'USER': 'kobro',
+        'USER': 'bekal',
         'PASSWORD': 1433,
     }
 }

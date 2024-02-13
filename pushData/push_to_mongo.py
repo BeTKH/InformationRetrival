@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from getContents import *
+from readContents import *
 
 # MongoDB connection setup
 client = MongoClient('localhost', 27017)  # Connect to the MongoDB instance
