@@ -17,6 +17,8 @@ View the Jupyter Notebook [here.](https://htmlpreview.github.io/?https://github.
 
 ## How to run the app
 
+**Step-1: Virtual Environment Setup**
+
 - Create a `pipenv` virtual environment first using [documentation](https://pipenv.pypa.io/en/latest/installation.html)
 
 - Install dependencies from Pipfile
@@ -35,6 +37,18 @@ View the Jupyter Notebook [here.](https://htmlpreview.github.io/?https://github.
   ```
   python manage.py runserver
   ```
+
+**Step-2: Postgres Database and inserting data**
+
+- text datasets are available inside `dataset` folder
+- first setup postgres database locally - [check documentation](https://neon.tech/postgresql/postgresql-getting-started)
+- insert text data into the databse using the code `push_to_postgres.py`
+
+  <img width="1174" alt="Screenshot 2024-01-29 at 3 55 38 PM" src="resources/imgs/structure.png">
+
+#### Promise!
+
+_I will dockerize this soon_
 
 ### Video
 
@@ -58,4 +72,10 @@ https://github.com/BeTKH/IR_postgres/assets/45674779/5944657a-e4e5-4f7d-9761-980
 
 ## Web App's UI
 
-<img width="1174" alt="Screenshot 2024-01-29 at 3 55 38 PM" src="https://github.com/BeTKH/IR_postgres/assets/45674779/e5cc53ce-f462-4c89-9015-05ecd3c043b2">
+<img width="1174" alt="Screenshot 2024-01-29 at 3 55 38 PM" src="resources/imgs/page.png">
+
+<img width="1174" alt="Screenshot 2024-01-29 at 3 55 38 PM" src="resources/imgs/landingpage.png">
+
+<img width="1174" alt="Screenshot 2024-01-29 at 3 55 38 PM" src="resources/imgs/searchResultsPage.png">
+
+<img width="1174" alt="Screenshot 2024-01-29 at 3 55 38 PM" src="resources/imgs/details.png">

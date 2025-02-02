@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from tdm.models import Document
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
 
 
-from .customLibraries import clean_Text, query_documents, orderByRelevance, renderPlot
+from .customLibraries import clean_Text, query_documents, orderByRelevance
 from .createTDM import tdm, allTerms, tdm_tf, tdm_tfidf
 
 
@@ -29,8 +28,6 @@ def getQueryText(requestIndex):
 
         print(fileNames_score)
 
-        # render plot and Get the image data as a byte string
-        # imgData = renderPlot(fileNames_score, 'blue')
         # get all document attributes from the database
         dbDocumentFilelds = Document.objects.all
 
