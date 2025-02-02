@@ -4,6 +4,10 @@ from .models import Document
 
 
 # views functions
+# request handler
+# takes request and returns response
+
+
 def queryResults(requestDocs):
 
     # get all documents in the tdm

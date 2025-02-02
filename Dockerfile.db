@@ -1,0 +1,6 @@
+FROM postgres:latest
+
+# Set the environmental variables
+ENV POSTGRES_USER=bekal
+ENV POSTGRES_PASSWORD=1433
+ENV POSTGRES_DB=irDB

@@ -171,3 +171,5 @@ cython_debug/
 /_archive
 /pushData/gutenberg/
 /gutenberg/
+
+.vscode
